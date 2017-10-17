@@ -6,8 +6,8 @@ subtitle:
 description: A tiny JS package for animated scrolling
 author: Bill Columbia
 
-url: butr.js.org
-root: /
+url: https://ufhealth.github.io/
+root: /butr-site/
 permalink: :year/:month/:day/:title
 
 theme: docparty
@@ -20,3 +20,8 @@ node_sass:
   outputStyle: compressed
   precision: 5
   sourceComments: false
+
+deploy:
+  type: git
+  repo: git@github.com:UFHealth/butr-site.git
+  branch: master
