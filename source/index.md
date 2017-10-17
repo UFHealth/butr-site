@@ -19,8 +19,12 @@ Butr works well on all modern browsers and IE 10+.
 ### Downloading or Installing
 
 #### Stand Alone
-- Download [butr.min.js](#)
-- Include it somewhere before the closing `</body>` tag: `<script src="path/to/butr.min.js"></script>`
+- Go to the [latest release](https://github.com/UFHealth/butr.js/releases/) and download `butr.min.js`
+- Include it somewhere before the closing `</body>` tag:
+``` html
+<script src="path/to/butr.min.js"></script>`
+```
+
 - [Start using it!](#Usage)
 
 #### Import or Require

@@ -36,6 +36,14 @@
   }
 }
 
+code {
+  background-color: $SuperDarkPurp;
+  color: $TextWhite;
+  display: inline-block;
+  padding: 0 6px;
+  border-radius: 4px;
+}
+
 pre {
   color: $TextWhite;
   display: block;
