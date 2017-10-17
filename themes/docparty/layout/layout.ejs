@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>
+      <%- page.title ? page.title + ' — ' : '' %>Butr
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+    <%- css('css/style') %>
+    <link href='//fonts.googleapis.com/css?family=Roboto Mono|Rubik:300,400,500' rel='stylesheet' type='text/css'>
+  </head>
+
+  <body>
+    <%- partial('_partials/svgs') %>
+
+    <div class="wrap">
+      <%- body %>
+    </div>
+
+    <%- js('js/butr.min') %>
+    <%- js('js/site') %>
+  </body>
+</html>

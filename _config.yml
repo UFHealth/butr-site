@@ -1,0 +1,22 @@
+# Hexo Configuration
+# Docs: https://hexo.io/docs/configuration.html
+
+title: Butr
+subtitle:
+description: A tiny JS package for animated scrolling
+author: Bill Columbia
+
+url: butr.js.org
+root: /
+permalink: :year/:month/:day/:title
+
+theme: docparty
+
+highlight:
+  enable: true
+  line_number: false
+
+node_sass:
+  outputStyle: compressed
+  precision: 5
+  sourceComments: false
