@@ -3,7 +3,7 @@ title: Home
 ---
 
 ## Getting Started
-Butr is a tiny (2kb~) JavaScript package that can:
+Butr is a tiny (3kb~) JavaScript package that can:
 
 - Create a table of contents with links from any content with headings
 - Mark the currently in view item in the created (or user defined) table of contents
