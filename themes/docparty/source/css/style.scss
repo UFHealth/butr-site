@@ -1,5 +1,83 @@
-@import 'vars',
-        'highlighting';
+$SuperDarkPurp: #0e063e;
+$DarkPurp: #281C75;
+$LightPurp: #864AE2;
+$BrightPink: #E478FF;
+$TextWhite: #DAD5FF;
+$ButterLight: #FFEED5;
+$ButterDark: #EDCD88;
+$PinkHighlight: #BE6BEC;
+
+$BasePixels: 18;
+$GridSize: 12;
+$MaxWidth: 1128;
+
+.highlight {
+  margin: 0;
+
+  table { width: 100% }
+  &.js pre:after { content: 'JS' }
+  &.html pre:after { content: 'HTML' }
+}
+
+pre {
+  background: $SuperDarkPurp;
+  border-radius: 8px;
+  color: $TextWhite;
+  display: block;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 15px;
+  overflow-x: auto;
+  padding: 12px 24px;
+  position: relative;
+
+  &:after {
+    display: block;
+    position: absolute;
+    color: $TextWhite;
+    font-family: 'Rubik', sans-serif;
+    letter-spacing: .1em;
+    top: 12px;
+    right: 12px;
+    background-color: #3b346c;
+    border-radius: 4px;
+    padding: 3px 5px;
+    line-height: 1;
+    text-align: center;
+    font-size: 10px;
+    font-weight: 500;
+  }
+
+  .function .keyword,
+  .constant {
+    color: $LightPurp;
+  }
+
+  .keyword,
+  .attribute {
+    color: $ButterDark;
+  }
+
+  .number,
+  .literal {
+    color: $BrightPink;
+  }
+
+  .comment {
+    color: #7b7695;
+  }
+
+  .string {
+    color: #a1df5b;
+  }
+
+  .tag .name {
+    color: $ButterDark;
+  }
+
+  .tag .attr {
+    color: $BrightPink;
+  }
+}
 
 * { box-sizing: border-box; }
 
