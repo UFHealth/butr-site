@@ -5,10 +5,10 @@ title: Home
 ## Getting Started
 Butr is a tiny (3kb~) JavaScript package that can:
 
-- Create a table of contents with links from any content with headings
-- Mark the currently in view item in the created (or user defined) table of contents
-- Animate scrolling to any location or element on the page smoothly (like butter)
-- Automatically smooth scroll to any anchor's `href` that has the `data-butr` attribute
+- Collect all headings and create a table of contents with links
+- Update the table of contents to indicate which link is currently in view
+- Smoothly animate scroll to any location or element - like butter ;)
+- Automatically animate scroll on any anchor with the `data-butr` attribute
 
 ### Issues
 Please create an issue on [GitHub](https://github.com/UFHealth/butr.js/issues) if you find any bugs or have a suggestion.
