@@ -193,7 +193,8 @@ butr.stickyNav({
    * some breathing room for the sidebar - otherwise the
    * text might not look great touching the edge.
    * Default: 0
-   * Type: string or number ('12px' or 12) always interpreted as pixels
+   * Type: string or number ('12px' or 12) always
+   * interpreted as pixels
    */
   distanceTop: '12px'
 })
