@@ -25,6 +25,7 @@
   }
   &.js:after { content: 'JS' }
   &.html:after { content: 'HTML' }
+  &.bash:after { content: 'SHELL' }
 
   table,
   tr,
