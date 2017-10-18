@@ -157,7 +157,8 @@ butr.marker({
    */
   duration: 800,
   /**
-   * Callback to execute on completion of scrolling to link clicked
+   * Callback to execute on completion of scrolling to
+   * link clicked
    * Default: null
    * Type: function
    */
@@ -165,13 +166,15 @@ butr.marker({
     console.log('Done!')
   },
   /**
-   * HTML Class added to js-butr-marker (div) in the sidebar
+   * HTML Class added to js-butr-marker (div) in the
+   * sidebar
    * Default: '' (empty string)
    * Type: string
    */
   markerClass: 'marker',
   /**
-   * HTML Class added to active anchor (a) in the sidebar
+   * HTML Class added to active anchor (a) in the
+   * sidebar
    * Default: '' (empty string)
    * Type: string
    */
@@ -186,8 +189,9 @@ Pin the sidebar nav to the top of the page once the top of it hits the top of th
 ``` js
 butr.stickyNav({
   /**
-   * Supply a distance from the top of the page to add some breathing room for
-   * the sidebar - otherwise the text might not look great touching the edge.
+   * Supply a distance from the top of the page to add
+   * some breathing room for the sidebar - otherwise the
+   * text might not look great touching the edge.
    * Default: 0
    * Type: string or number ('12px' or 12) always interpreted as pixels
    */
