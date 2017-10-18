@@ -97,21 +97,21 @@ butr.autoAnchors()
 ### .to()
 Animate scrolling to a location or element.
 
-#### JavaScript - Scroll to element
+#### Scroll to element
 ``` js
 butr.to({
   target: '.scroll-to-me',
 })
 ```
 
-#### JavaScript - Scroll to location
+#### Scroll to location
 ``` js
 butr.to({
   target: 500, // in px
 })
 ```
 
-#### JavaScript - All options
+#### All options
 ``` js
 butr.to({
   /**
@@ -139,6 +139,13 @@ butr.to({
    */
   keepHash: true,
   /**
+   * Modify the speed of the scrolling animation
+   * 2 === double speed, .5 === half speed
+   * Default: 1
+   * Type: number
+   */
+  speed: 1.2,
+  /**
    * Callback to execute on completion of animation
    * Default: null
    * Type: function
@@ -154,7 +161,16 @@ Automatically smooth scroll to any anchor's `href` with the data attribute `data
 
 #### JavaScript
 ``` js
-butr.autoAnchors()
+butr.autoAnchors({
+  /**
+   * Passes all its parameters to the internal to() call
+   * Default: null
+   * Type: object
+   */
+  to: {
+    ...options
+  }
+})
 ```
 
 #### HTML
@@ -181,7 +197,15 @@ butr.autoSidebar({
    * Default: '' (empty string)
    * Type: string
    */
-  liClass: 'nav-list-item'
+  liClass: 'nav-list-item',
+  /**
+   * Option to prepend links to nav, rather than append.
+   * Helpful if you want to have a Back to Top button at
+   * after all your links.
+   * Default: false
+   * Type: boolean
+   */
+  prepend: false
 })
 ```
 
@@ -282,7 +306,13 @@ butr.stickyNav({
    * Type: string or number ('12px' or 12) always
    * interpreted as pixels
    */
-  distanceTop: '12px'
+  distanceTop: '12px',
+  /**
+   * MediaQuery - when true, makes the nav sticky
+   * Default: false
+   * Type: string
+   */
+  mediaQuery: '(min-width: 767px)'
 })
 ```
 
