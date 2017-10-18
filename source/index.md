@@ -128,13 +128,13 @@ butr.autoSidebar({
    * Default: '' (empty string)
    * Type: string
    */
-  olClass: '',
+  olClass: 'list-reset nav-ordered-list',
   /**
    * HTML Class added to all list items (li) in the sidebar
    * Default: '' (empty string)
    * Type: string
    */
-  liClass: ''
+  liClass: 'nav-list-item'
 })
 ```
 
