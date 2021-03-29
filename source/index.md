@@ -3,7 +3,7 @@ title: Home
 ---
 
 ## Getting Started
-Butr is a tiny (3kb~) JavaScript package that can:
+Butr is a tiny (4kb~ gzip) JavaScript package that can:
 
 - Collect all headings and create a table of contents with links
 - Update the table of contents to indicate which link is currently in view
@@ -16,12 +16,12 @@ The best example is this documentation itself, which uses butr for its sidebar.
 Please create an issue on [GitHub](https://github.com/UFHealth/butr.js/issues) if you find any bugs or have a suggestion.
 
 ### Browser Support
-Butr works well on all modern browsers and IE 10+.
+Butr works well on all modern browsers and IE 11+.
 
 ### Downloading or Installing
 
 #### Stand Alone
-- Go to the [latest release](https://github.com/UFHealth/butr.js/releases/) and download `butr.min.js`
+- Go to the [latest release](https://github.com/UFHealth/butr.js/releases/) and download `dist/butr.js`
 - Include it somewhere before the closing `</body>` tag:
 ``` html
 <script src="path/to/butr.min.js"></script>`
@@ -33,49 +33,55 @@ Butr works well on all modern browsers and IE 10+.
 
 - Install with npm
   ``` bash
-  npm i --save butr
+  npm i github:ufhealth/butr
   ```
 
-- ES2015
+- ES2015+
   ``` js
-  import butr from 'butr' // ES2015+ only
+  import Butr from './butr'
   ```
 
 - requireJS
   ``` js
-  var butr = require('butr') // requireJS only
+  var Butr = require('butr') // requireJS only
   ```
 
 ## Usage
-Butr has 5 methods that can all be called independently or all together. Some methods depend on having specific classes in your markup. Check each method for required classes.
+Butr has 5 modules that can be used independently or together. Some methods depend on having specific classes in your markup. Check each method for required classes.
 
-- <a href="#to" data-butr>`butr.to()`</a>
-- <a href="#autoAnchors" data-butr>`butr.autoAnchors()`</a>
-- <a href="#autoSidebar" data-butr>`butr.autoSidebar()`</a>
-- <a href="#marker" data-butr>`butr.marker()`</a>
-- <a href="#stickyNav" data-butr>`butr.stickyNav()`</a>
+- <a href="#to" data-butr>`butr.to`</a>
+- <a href="#autoAnchors" data-butr>`Auto Anchors`</a>
+- <a href="#autoSidebar" data-butr>`Auto Sidebar`</a>
+- <a href="#marker" data-butr>`Marker`</a>
+- <a href="#stickyNav" data-butr>`Sticky Nav`</a>
 
 ### Full Example
-This snippet will create a table of contents with links, from the headings in your content with `butr.autoSidebar()`, create a marker to track which link in the table of contents is in view with `butr.marker()`, pin the table of contents to the top of the page after scrolling with `butr.stickyNav()`, and animate scroll of any anchor tags with the `data-butr` atrribute using `butr.autoAnchors()`.
+This snippet will create a table of contents with links, from the headings in your content with `autoSidebar`, create a marker to track which link in the table of contents is in view with `marker`, pin the table of contents to the top of the page after scrolling with `stickyNav`, and animate scroll of any anchor tags with the `data-butr` atrribute using `autoAnchors`.
 
-Keep in mind that order of operations is important between some methods. `.autoAnchors()` should always come last so that it can attach events to any dynamically generated elements. The sidebar (created with `.autoSidebar()` or any other means) should be created before attaching a marker with `.marker()`.
+Keep in mind that order of operations is important between some methods. `autoAnchors` should always come last so that it can attach events to any dynamically generated elements. The sidebar (created with `autoSidebar` or any other means) should be created before attaching a marker with `marker`.
 
 #### JavaScript
 ``` js
-butr.autoSidebar({
-  olClass: 'list-reset nav-list',
-  liClass: 'nav-item',
-  aClass: 'nav-link'
+document.addEventListener('DOMContentLoaded', () => {
+  Butr.init({
+    AutoAnchors: true,
+    // Sidebar options
+    AutoSidebar: true,
+    olClass: 'list-reset nav-list',
+    liClass: 'nav-item',
+    aClass: 'nav-link',
+    // Marker options
+    Marker: true,
+    scrollingElement: null,
+    scrollOffset: 24,
+    duration: 400,
+    markerClass: 'nav-marker',
+    activeClass: 'nav-link-active',
+    // Sticky Nav options
+    StickyNav: true,
+    mediaQuery: '(min-width: 1200px)'
+  })
 })
-butr.marker({
-  duration: 400,
-  markerClass: 'nav-marker',
-  activeClass: 'nav-link-active'
-})
-butr.stickyNav({
-  distanceTop: '12px'
-})
-butr.autoAnchors()
 ```
 
 #### HTML
@@ -99,27 +105,21 @@ Animate scrolling to a location or element.
 
 #### Scroll to element
 ``` js
-butr.to({
-  target: '.scroll-to-me',
+Butr.to({
+  target: '.scroll-to-me'
 })
 ```
 
 #### Scroll to location
 ``` js
-butr.to({
-  target: 500, // in px
+Butr.to({
+  target: 500 // in px
 })
 ```
 
 #### All options
 ``` js
-butr.to({
-  /**
-   * Scrollable element (parent of content)
-   * Default: body element
-   * Type: string
-   */
-  scrollingElement: '.scrollable-container',
+Butr.to({
   /**
    * Target to scroll to - in px or querySelector string
    * Default: 0
@@ -150,62 +150,49 @@ butr.to({
    * Default: null
    * Type: function
    */
-  callback: function () {
+  afterTo: function () {
     console.log('Done!')
   }
 })
 ```
 
-### .autoAnchors()
-Automatically smooth scroll to any anchor's `href` with the data attribute `data-butr`.
-
-#### JavaScript
-``` js
-butr.autoAnchors({
-  /**
-   * Passes all its parameters to the internal to() call
-   * Default: null
-   * Type: object
-   */
-  to: {
-    ...options
-  }
-})
-```
+### Auto Anchors
+Automatically smooth scroll to any anchor's `href` with the data attribute `data-butr`. Auto anchors doesn't have any additional options.
 
 #### HTML
 ``` html
 <a href="#autoAnchors" data-butr>
-  Usage for .autoAnchors()
+  Usage for autoAnchors
 </a>
 ```
 
-### .autoSidebar()
+### Auto Sidebar
 Automatically create a table of contents with links based on the headings in the content.
 
 #### JavaScript
-``` js
-butr.autoSidebar({
-  /**
-   * HTML Class added to all lists (ol) in the sidebar
-   * Default: '' (empty string)
-   * Type: string
-   */
-  olClass: 'list-reset nav-ordered-list',
-  /**
-   * HTML Class added to all list items (li) in the sidebar
-   * Default: '' (empty string)
-   * Type: string
-   */
-  liClass: 'nav-list-item',
-  /**
-   * Option to prepend links to nav, rather than append.
-   * Helpful if you want to have a Back to Top button at
-   * after all your links.
-   * Default: false
-   * Type: boolean
-   */
-  prepend: false
+
+```js
+  Butr.init({
+    AutoSidebar: true,
+    /**
+     * HTML Class added to all lists (ol) in the sidebar
+     * Default: 'Butr__Sidebar__List'
+     * Type: string
+     */
+    olClass: 'list-reset nav-list',
+    /**
+     * HTML Class added to all list items (li) in the sidebar
+     * Default: 'Butr__Sidebar__Item'
+     * Type: string
+     */
+    liClass: 'nav-item',
+    /**
+     * HTML Class added to all anchors (a) in the sidebar
+     * Default: 'Butr__Sidebar__Link'
+     * Type: string
+     */
+    aClass: 'nav-link',
+  })
 })
 ```
 
@@ -226,12 +213,12 @@ butr.autoSidebar({
 </div>
 ```
 
-### .marker()
+### Marker
 Track which nav link's section is currently in view. Optionally style a marker to further indicate which section is in view. The marker on this page is a good example of what is possible. Use CSS to do basically anything with it.
 
 #### JavaScript
-``` js
-butr.marker({
+```js
+Butr.init({
   /**
    * Scrollable element (parent of content)
    * Default: body element
@@ -239,31 +226,29 @@ butr.marker({
    */
   scrollingElement: '.scrollable-container',
   /**
+   * Scroll offset. This allows you to scroll a little less to avoid
+   * padding and other issues that might have the heading being scrolled to.
+   * Default: 0
+   * Type: string
+   */
+  scrollOffset: 24,
+  /**
    * Duration of scroll animation in ms
-   * Default: 400
+   * Default: 320
    * Type: number
    */
-  duration: 800,
-  /**
-   * Callback to execute on completion of scrolling to
-   * link clicked
-   * Default: null
-   * Type: function
-   */
-  callback: function () {
-    console.log('Done!')
-  },
+  duration: 400,
   /**
    * HTML Class added to js-butr-marker (div) in the
    * sidebar
-   * Default: '' (empty string)
+   * Default: 'Butr__Marker'
    * Type: string
    */
   markerClass: 'marker',
   /**
    * HTML Class added to active anchor (a) in the
    * sidebar
-   * Default: '' (empty string)
+   * Default: 'Butr__Sidebar__Link--active'
    * Type: string
    */
   activeClass: 'active-nav-item'
@@ -292,27 +277,20 @@ If you are manually creating nav links, make sure to add the `js-butr-link` clas
 ```
 
 
-### .stickyNav()
+### Sticky Nav
 Pin the sidebar nav to the top of the page once the top of it hits the top of the browser when scrolling.
 
 #### JavaScript
 ``` js
-butr.stickyNav({
-  /**
-   * Supply a distance from the top of the page to add
-   * some breathing room for the sidebar - otherwise the
-   * text might not look great touching the edge.
-   * Default: 0
-   * Type: string or number ('12px' or 12) always
-   * interpreted as pixels
-   */
-  distanceTop: '12px',
-  /**
-   * MediaQuery - when true, makes the nav sticky
-   * Default: false
-   * Type: string
-   */
-  mediaQuery: '(min-width: 767px)'
+  Butr.init({
+    StickyNav: true,
+    /**
+     * MediaQuery - when true, makes the nav sticky
+     * Default: false
+     * Type: string
+     */
+    mediaQuery: '(min-width: 1200px)'
+  })
 })
 ```
 
