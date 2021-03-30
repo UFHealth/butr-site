@@ -47,9 +47,9 @@ Butr works well on all modern browsers and IE 11+.
   ```
 
 ## Usage
-Butr has 5 modules that can be used independently or together. Some methods depend on having specific classes in your markup. Check each method for required classes.
+Butr has 5 modules that can be used independently or together. Some depend on having specific classes in your markup. Check each module for requirements and options.
 
-- <a href="#to" data-butr>`butr.to`</a>
+- <a href="#to" data-butr>`To`</a>
 - <a href="#autoAnchors" data-butr>`Auto Anchors`</a>
 - <a href="#autoSidebar" data-butr>`Auto Sidebar`</a>
 - <a href="#marker" data-butr>`Marker`</a>
@@ -229,7 +229,7 @@ Butr.init({
    * Scroll offset. This allows you to scroll a little less to avoid
    * padding and other issues that might have the heading being scrolled to.
    * Default: 0
-   * Type: string
+   * Type: number
    */
   scrollOffset: 24,
   /**
